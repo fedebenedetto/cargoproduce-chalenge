@@ -1,0 +1,7 @@
+{
+    "mock":false,
+    "production": false,
+    "develop": true,
+    "apiUrl": "/api/",
+    "token": "undefined"
+}
