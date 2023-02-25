@@ -1,6 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-
+import { Component, Input, OnInit } from '@angular/core';
+import {ThemePalette} from '@angular/material/core';
+import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 @Component({
   selector: 'app-spinner',
   templateUrl: './spinner.component.html',
@@ -8,35 +8,19 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class SpinnerComponent implements OnInit {
 
-  @ViewChild('loader') loader?: ElementRef;
-  @ViewChild('border') border?: ElementRef;
+  color: ThemePalette = 'primary';
+  mode: ProgressSpinnerMode = 'determinate';
+  value = 0;
 
-  α = 0;
-  π = Math.PI;
-  t = 1000;
-
+  time:number = 0.1;
   constructor() { }
 
   ngOnInit() {
-    this.draw();
-  }
-
-  draw() {
-    this.α++;
-    this.α %= 360;
-    const r = ( this.α * this.π / 180 )
-      , x = Math.sin( r ) * 125
-      , y = Math.cos( r ) * - 125
-      , mid = ( this.α > 180 ) ? 1 : 0
-      , anim = 'M 0 0 v -125 A 125 125 1 '
-             + mid + ' 1 '
-             +  x  + ' '
-             +  y  + ' z';
-
-    this.loader?.nativeElement.setAttribute( 'd', anim );
-    this.border?.nativeElement.setAttribute( 'd', anim );
-
-    setTimeout(() => this.draw(), this.t); // Redraw
+    let interval = setInterval(() => {
+      if(this.value < 100) {
+        this.value++;
+      }
+    },this.time * 1000)
   }
 
 }

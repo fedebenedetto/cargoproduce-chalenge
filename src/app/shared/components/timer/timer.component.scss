@@ -1,0 +1,20 @@
+.isPlay {
+    display: none;
+}
+
+.isntPlay {
+    display: block;
+}
+
+.spinner {
+    display: block;
+}
+
+.spinner::after {
+    display: none;
+}
+
+.spinner:hover .isPlay {
+    display: block;
+}
+

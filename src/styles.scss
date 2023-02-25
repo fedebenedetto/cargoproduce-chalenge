@@ -245,9 +245,9 @@ body {
 	content: '×';
 }
 
-.todo-list li:hover .destroy {
-	display: block;
-}
+// .todo-list li:hover .destroy {
+// 	display: block;
+// }
 
 .todo-list li .edit {
 	display: none;
@@ -378,3 +378,5 @@ html .clear-completed:active {
 		bottom: 10px;
 	}
 }
+
+html, body { margin-top: 5rem; }

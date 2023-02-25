@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { ThemeModule } from './theme/theme.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const MODULES = [
   AppRoutingModule,
@@ -18,7 +19,8 @@ const MODULES = [
     AppComponent
    ],
   imports: [
-    ...MODULES
+    ...MODULES,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
