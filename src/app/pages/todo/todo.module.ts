@@ -7,6 +7,7 @@ import { TodoHeaderComponent } from './components/todo-header/todo-header.compon
 import { TodoItemComponent } from './components/todo-item/todo-item.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoComponent } from './todo/todo.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 const COMPONENTS = [
   TodoComponent,
@@ -16,13 +17,18 @@ const COMPONENTS = [
   TodoListComponent
 ]
 
+const MODULES = [
+  CommonModule,
+  TodoRoutingModule,
+  SharedModule
+]
+
 @NgModule({
   declarations: [
     ...COMPONENTS
   ],
   imports: [
-    CommonModule,
-    TodoRoutingModule
+    ...MODULES
   ]
 })
 export class TodoModule { }
