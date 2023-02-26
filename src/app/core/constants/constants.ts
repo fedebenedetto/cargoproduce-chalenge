@@ -1,3 +1,3 @@
 export const TOKEN = 'token'
 
-export const MIN30 = 90
+export const MIN30 = 1800
