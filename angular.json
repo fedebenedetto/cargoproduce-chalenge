@@ -70,6 +70,7 @@
             },
             "development": {
               "browserTarget": "cargoproduce-chalenge:build:development"
+
             }
           },
           "defaultConfiguration": "development"

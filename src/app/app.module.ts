@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { ThemeModule } from './theme/theme.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const MODULES = [
   AppRoutingModule,
   CoreModule,
   RouterModule.forRoot([]),
-  ThemeModule
+  ThemeModule,
+  ReactiveFormsModule,
+  FormsModule,
+
 ]
 
 @NgModule({

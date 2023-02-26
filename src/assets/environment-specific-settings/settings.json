@@ -1,7 +1,10 @@
 {
-    "mock":false,
+    "mock": false,
     "production": false,
     "develop": true,
-    "apiUrl": "/api/",
-    "token": "undefined"
+    "apiUrl": "http://localhost:3000/",
+    "token": "undefined",
+    "urls": {
+        "task": "tasks"
+    }
 }

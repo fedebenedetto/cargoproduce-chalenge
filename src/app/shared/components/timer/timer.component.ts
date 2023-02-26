@@ -9,6 +9,7 @@ export class TimerComponent implements OnInit {
 
   isPlay: boolean = false;
   isHover: boolean = false;
+  interval:number = 0;
   constructor() { }
 
   ngOnInit() {
@@ -16,7 +17,6 @@ export class TimerComponent implements OnInit {
 
   isPlayed(data: boolean) {
     this.isPlay = data;
-    this.hover();
   }
 
   hover() {
@@ -26,5 +26,13 @@ export class TimerComponent implements OnInit {
   noHover() {
     this.isHover = false
 
+  }
+
+  getInterval(data:any){
+    this.interval = data;
+  }
+
+  getValue(){
+    return this.interval;
   }
 }

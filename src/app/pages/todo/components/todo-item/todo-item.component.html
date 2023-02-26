@@ -1,9 +1,13 @@
-<li >
+<li [class.completed]="task?.done"
+[class.editing]="editando">
   <div class="view">
     <!-- <input class="toggle" type="checkbox"> -->
     <app-timer></app-timer>
-    <label></label>
-    <button class="destroy"></button>
+
+<label (dblclick)="editar()"> {{ task?.name }} </label>
   </div>
-  <input class="edit">
+  <input class="edit" 
+           type="text"
+           [formControl]="txtInput"
+           #inputFisico>
 </li>

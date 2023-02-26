@@ -1,0 +1,11 @@
+{
+    "name": "json-server",
+    "version": "0.16.3",
+    "description": "Fake REST API for testing and prototyping",
+    "scripts": {
+      "start": "json-server --watch db.json --middlewares cors"
+    },
+    "dependencies": {
+      "json-server": "^0.16.3"
+    }
+  }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TasksStoreService } from 'src/app/core/services/store/tasks/tasks.store.service';
 
 @Component({
   selector: 'app-todo',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private taskSrv:TasksStoreService) { }
 
   ngOnInit() {
+    this.taskSrv.getTask()
   }
+
 
 }

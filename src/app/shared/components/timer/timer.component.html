@@ -1,3 +1,10 @@
-<app-button-play (onPlay)="isPlayed($event)" [ngClass]="{'isPlay':isPlay && !isHover,'isntPlay':isHover}"
-  (mouseout)="isPlay ? noHover():null" (mouseover)="isPlay ? hover() : null"></app-button-play>
-<app-spinner *ngIf="isPlay" [ngClass]="{'isPlay':isHover,'isntPlay':!isHover}" (mouseover)="hover()"></app-spinner>
+<app-button-play 
+(onPlay)="isPlayed($event)" 
+[ngClass]="{'isPlay':isPlay && !isHover,'isntPlay':isHover}"
+(mouseout)="isPlay ? noHover():null" 
+(mouseover)="isPlay ? hover() : null"></app-button-play>
+<app-spinner *ngIf="isPlay"
+ [ngClass]="{'isPlay':isHover,'isntPlay':!isHover}" 
+ (mouseover)="hover()"
+ [valuePaused]="interval" 
+ (onPause)="getInterval($event)"></app-spinner>

@@ -1,0 +1,24 @@
+import { Injectable } from "@angular/core";
+import { ofType, createEffect, Actions } from '@ngrx/effects';
+import { of } from 'rxjs';
+import { map, catchError, repeat, switchMap } from 'rxjs/operators';
+import { Task } from "src/app/core/models/task";
+import { TasksService } from "src/app/core/services/api/tasks/tasks.service";
+
+import * as taskActions from '../../actions/tasks/tasks.actions'
+@Injectable()
+export class TaskEffects {
+
+    constructor(private actions: Actions, private taskSrv: TasksService) {
+    }
+
+
+    getTasks$ = createEffect(() => this.actions.pipe(
+        ofType(taskActions.getTasks),
+        switchMap(() => this.taskSrv.getTasks()),
+        map(response => taskActions.setGetTasksResponse({ task: response! as Task[] })),
+        catchError(error => of(taskActions.setGetTasksError({ error }))),
+        repeat()));
+
+
+}

@@ -8,6 +8,7 @@ import { TodoItemComponent } from './components/todo-item/todo-item.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoComponent } from './todo/todo.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const COMPONENTS = [
   TodoComponent,
@@ -20,7 +21,9 @@ const COMPONENTS = [
 const MODULES = [
   CommonModule,
   TodoRoutingModule,
-  SharedModule
+  SharedModule,
+  ReactiveFormsModule,
+  FormsModule
 ]
 
 @NgModule({
