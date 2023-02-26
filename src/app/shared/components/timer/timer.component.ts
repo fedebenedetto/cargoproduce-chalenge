@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-timer',
@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./timer.component.scss']
 })
 export class TimerComponent implements OnInit {
+
+
+  @Output() onFinish = new EventEmitter<any>();
+
 
   isPlay: boolean = false;
   isHover: boolean = false;
@@ -34,5 +38,9 @@ export class TimerComponent implements OnInit {
 
   getValue(){
     return this.interval;
+  }
+
+  getFinish(data:boolean){
+    this.onFinish.emit(data)
   }
 }

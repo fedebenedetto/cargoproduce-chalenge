@@ -7,4 +7,6 @@
  [ngClass]="{'isPlay':isHover,'isntPlay':!isHover}" 
  (mouseover)="hover()"
  [valuePaused]="interval" 
- (onPause)="getInterval($event)"></app-spinner>
+ (onPause)="getInterval($event)"
+ (onFinish)="getFinish($event)"
+ ></app-spinner>

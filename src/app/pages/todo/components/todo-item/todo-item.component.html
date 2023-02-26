@@ -2,12 +2,13 @@
 [class.editing]="editando">
   <div class="view">
     <!-- <input class="toggle" type="checkbox"> -->
-    <app-timer></app-timer>
+    <app-timer *ngIf="!task?.done" (onFinish)="getFinish($event)"></app-timer>
 
 <label (dblclick)="editar()"> {{ task?.name }} </label>
   </div>
   <input class="edit" 
            type="text"
            [formControl]="txtInput"
+           (blur)="terminarEdicion()"
            #inputFisico>
 </li>

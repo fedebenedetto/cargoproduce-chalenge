@@ -20,5 +20,18 @@ export class TaskEffects {
         catchError(error => of(taskActions.setGetTasksError({ error }))),
         repeat()));
 
+    PostTasks$ = createEffect(() => this.actions.pipe(
+        ofType(taskActions.postTasks),
+        switchMap(request => this.taskSrv.postTask(request.task)),
+        switchMap(response => of(taskActions.setPostTasksResponse({ response }),taskActions.getTasks())),
+        catchError(error => of(taskActions.setPostTasksError({ error }))),
+        repeat()));
+
+    putTasks$ = createEffect(() => this.actions.pipe(
+        ofType(taskActions.putTasks),
+        switchMap(request => this.taskSrv.putTask(request.task)),
+        switchMap(response => of(taskActions.setPutTasksResponse({ response }),taskActions.getTasks())),
+        catchError(error => of(taskActions.setPutTasksError({ error }))),
+        repeat()));
 
 }

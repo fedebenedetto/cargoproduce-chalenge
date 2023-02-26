@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { MODULE_STORE, MODULE_STORE_EFFECTS } from './constants/common-modules.constants';
 import { HttpBaseService } from './services/api/http-base/http-base.service';
 import { AuthInterceptorService } from './interceptors/auth/auth-interceptor.service';
+import { HttpInterceptorService } from './interceptors/http/http-interceptor.service';
 
 const MODULES = [
   BrowserModule,
@@ -26,6 +27,11 @@ const MODULES = [
   exports: [...MODULES],
   providers:[
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    }
   ]
 })
 export class CoreModule {

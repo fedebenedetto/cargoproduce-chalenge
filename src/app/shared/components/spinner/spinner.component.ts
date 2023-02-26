@@ -10,6 +10,7 @@ export class SpinnerComponent implements OnInit, OnDestroy {
 
   @Input() valuePaused: number = 0;
   @Output() onPause = new EventEmitter<any>();
+  @Output() onFinish = new EventEmitter<boolean>();
   color: ThemePalette = 'primary';
   mode: ProgressSpinnerMode = 'determinate';
 
@@ -33,6 +34,9 @@ export class SpinnerComponent implements OnInit, OnDestroy {
     this.interval = setInterval(() => {
       if (this.value < 100) {
         this.value++;
+      } else {
+        this.onFinish.emit(true)
+        clearInterval(this.interval);
       }
     }, this.time * 1000)
   }

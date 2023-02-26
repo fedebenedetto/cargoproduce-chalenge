@@ -24,6 +24,9 @@ export class TodoListComponent implements OnInit, OnDestroy {
   getTask() {
     let loTask: any;
     this.taskSusc = this.taskSrv.getProperty().subscribe(({ getTaskState }) => {
+      if (getTaskState.state === 'LOADING') {
+        loTask = null
+      }
       if (getTaskState.state === 'SUCCESS' && !loTask) {
         loTask = getTaskState.getTastResponse;
         this.tasks = getTaskState?.getTastResponse;
