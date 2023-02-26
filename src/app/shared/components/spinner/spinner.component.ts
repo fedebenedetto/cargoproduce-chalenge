@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import * as moment from 'moment';
+import { MIN30 } from 'src/app/core/constants/constants';
 
 @Component({
   selector: 'app-spinner',
@@ -17,7 +18,7 @@ export class SpinnerComponent implements OnInit, OnDestroy {
   color: ThemePalette = 'primary';
   mode: ProgressSpinnerMode = 'determinate';
 
-  timeLeft: number = 90; // 1.5 minutes in seconds
+  timeLeft: number = MIN30; // 30 minutes in seconds
   interval: any = 0;
   value = 0;
 
@@ -32,13 +33,12 @@ export class SpinnerComponent implements OnInit, OnDestroy {
   }
 
   startTimer() {
-    this.value = this.valuePaused;
+    this.timeLeft = this.valuePaused !== 0 ? this.valuePaused : this.timeLeft;
     this.interval = setInterval(() => {
       if (this.timeLeft > 0) {
         this.timeLeft--;
-        this.value = ((90 - this.timeLeft) / 90) * 100; // Update value based on time left
-        let time = this.timeLeft; // Format time as minutes and seconds
-        this.onTime.emit(time);
+        this.value = ((MIN30 - this.timeLeft) / MIN30) * 100;
+        this.onTime.emit(this.timeLeft);
       } else {
         this.onFinish.emit(true);
         clearInterval(this.interval);
@@ -47,7 +47,9 @@ export class SpinnerComponent implements OnInit, OnDestroy {
   }
 
   pauseTimer() {
-    this.onPause.emit(this.value);
+    if (this.timeLeft > 0)
+      this.onPause.emit(this.timeLeft);
+      
     clearInterval(this.interval);
   }
 

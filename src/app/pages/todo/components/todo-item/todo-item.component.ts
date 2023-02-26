@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MIN30 } from 'src/app/core/constants/constants';
 import { Task } from 'src/app/core/models/task';
 import { TasksStoreService } from 'src/app/core/services/store/tasks/tasks.store.service';
 
@@ -10,16 +11,21 @@ import { TasksStoreService } from 'src/app/core/services/store/tasks/tasks.store
 })
 export class TodoItemComponent implements OnInit {
 
-  @Input() task?: any;
+  @Input() task?: Task;
   @ViewChild('inputFisico') txtInputFisico?: ElementRef;
 
   txtInput: FormControl = new FormControl(this.task?.name, Validators.required);
 
   editando: boolean = false;
 
+  timeUsed: number = 0;
+
+  isPaused: boolean = false;
+
   constructor(private taskSrv: TasksStoreService) { }
 
   ngOnInit() {
+    this.timeUsed = this.task?.timeSpent === 0 ? 0 : MIN30 - this.task?.timeSpent!;
   }
 
   editar() {
@@ -44,10 +50,15 @@ export class TodoItemComponent implements OnInit {
   }
 
   getFinish(data: boolean) {
-    this.taskSrv.putTask({ id: this.task?.id, done: data , name: this.task?.name })
+    this.taskSrv.putTask({ id: this.task?.id, done: true, name: this.task?.name })
   }
 
-  getOnClick(data:boolean){
-    this.task.buttonEnabled = data;
+  getOnClick(data: boolean) {
+    this.isPaused = data;
+  }
+
+  getPaused(data: number) {
+    this.taskSrv.putTask({ id: this.task?.id, timeSpent: data, name: this.task?.name, done: false })
+
   }
 }

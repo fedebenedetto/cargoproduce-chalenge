@@ -2,27 +2,32 @@
   "tasks": [
     {
       "id": 1,
-      "done": true,
-      "name": "programar2",
-      "timeSpent": 0
+      "timeSpent": 53,
+      "name": "tarea1",
+      "done": false
     },
     {
       "id": 2,
-      "done": true,
+      "timeSpent": 82,
       "name": "programar22",
-      "timeSpent": 0
+      "done": false
     },
     {
-      "name": "programar hasta tarde",
-      "done": false,
       "id": 3,
-      "timeSpent": 0
+      "timeSpent": 0,
+      "name": "prueba",
+      "done": false
     },
     {
-      "name": "prueba con tiempo",
-      "done": false,
+      "id": 4,
       "timeSpent": 0,
-      "id": 4
+      "name": "prueba con tiempo",
+      "done": false
+    },
+    {
+      "id": 5,
+      "done": true,
+      "name": "nueva tarea"
     }
   ]
 }

@@ -5,7 +5,10 @@ const routes: Routes = [
   {
     path: 'pages',
     loadChildren: () => import('./pages/pages.module').then(module => module.PagesModule)
-  }
+  },
+
+  { path: "", redirectTo: "pages/todo", pathMatch: "full" },
+  { path: "**", redirectTo: "pages/todo" },
 ];
 
 @NgModule({

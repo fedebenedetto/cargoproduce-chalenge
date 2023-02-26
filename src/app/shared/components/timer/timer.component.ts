@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-timer',
@@ -9,13 +9,13 @@ export class TimerComponent implements OnInit {
 
 
   @Output() onFinish = new EventEmitter<any>();
+  @Output() onPaused = new EventEmitter<any>();
   @Output() onClick = new EventEmitter<boolean>();
 
-
+  @Input() valuePaused: number = 0;
   isPlay: boolean = false;
   isHover: boolean = false;
-  interval:number = 0;
-  timeElapsed:number = 0;
+  timeElapsed: number = 0;
   constructor() { }
 
   ngOnInit() {
@@ -35,19 +35,15 @@ export class TimerComponent implements OnInit {
 
   }
 
-  getInterval(data:any){
-    this.interval = data;
+  getInterval(data: any) {
+    this.onPaused.emit(data);
   }
 
-  getValue(){
-    return this.interval;
-  }
-
-  getFinish(data:boolean){
+  getFinish(data: boolean) {
     this.onFinish.emit(data)
   }
 
-  getTime(data:number){
+  getTime(data: number) {
     this.timeElapsed = data;
   }
 }

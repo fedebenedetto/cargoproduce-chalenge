@@ -8,7 +8,7 @@
     <app-spinner *ngIf="isPlay"
     [ngClass]="{'isPlay':isHover,'isntPlay':!isHover}" 
     (mouseover)="hover()"
-    [valuePaused]="interval" 
+    [valuePaused]="valuePaused" 
     (onPause)="getInterval($event)"
     (onFinish)="getFinish($event)"
     (onTime)="getTime($event)"
