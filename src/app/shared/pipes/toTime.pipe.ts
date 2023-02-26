@@ -7,7 +7,9 @@ import * as moment from 'moment';
 export class ToTimePipe implements PipeTransform {
 
   transform(value: any): any {
-    moment(value).format('HH:mm:ss')
+    let miliSecond = value * 1000
+    let time = moment(miliSecond).format('mm:ss')
+    return time
   }
 
 }

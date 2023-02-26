@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Task } from 'src/app/core/models/task';
-import { getTasks, postTasks, putTasks } from 'src/app/store/actions';
+import { getOneTasks, getTasks, postTasks, putTasks } from 'src/app/store/actions';
 import { AppState } from 'src/app/store/app.reducers';
 
 @Injectable({
@@ -14,6 +14,10 @@ export class TasksStoreService {
 
   getTask() {
     this.store.dispatch(getTasks())
+  }
+
+  getOneTask(id:number){
+    this.store.dispatch(getOneTasks({id}))
   }
 
   postTask(task: Task) {

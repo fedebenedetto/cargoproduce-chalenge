@@ -9,11 +9,13 @@ export class TimerComponent implements OnInit {
 
 
   @Output() onFinish = new EventEmitter<any>();
+  @Output() onClick = new EventEmitter<boolean>();
 
 
   isPlay: boolean = false;
   isHover: boolean = false;
   interval:number = 0;
+  timeElapsed:number = 0;
   constructor() { }
 
   ngOnInit() {
@@ -21,6 +23,7 @@ export class TimerComponent implements OnInit {
 
   isPlayed(data: boolean) {
     this.isPlay = data;
+    this.onClick.emit(this.isPlay)
   }
 
   hover() {
@@ -42,5 +45,9 @@ export class TimerComponent implements OnInit {
 
   getFinish(data:boolean){
     this.onFinish.emit(data)
+  }
+
+  getTime(data:number){
+    this.timeElapsed = data;
   }
 }

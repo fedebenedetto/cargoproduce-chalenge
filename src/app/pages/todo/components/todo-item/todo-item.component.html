@@ -2,7 +2,7 @@
 [class.editing]="editando">
   <div class="view">
     <!-- <input class="toggle" type="checkbox"> -->
-    <app-timer *ngIf="!task?.done" (onFinish)="getFinish($event)"></app-timer>
+    <app-timer [style.disabled]="!task.buttonEnabled" *ngIf="!task?.done" (onFinish)="getFinish($event)" (onClick)="getOnClick($event)"></app-timer>
 
 <label (dblclick)="editar()"> {{ task?.name }} </label>
   </div>

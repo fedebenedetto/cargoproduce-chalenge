@@ -1,12 +1,19 @@
-<app-button-play 
-(onPlay)="isPlayed($event)" 
-[ngClass]="{'isPlay':isPlay && !isHover,'isntPlay':isHover}"
-(mouseout)="isPlay ? noHover():null" 
-(mouseover)="isPlay ? hover() : null"></app-button-play>
-<app-spinner *ngIf="isPlay"
- [ngClass]="{'isPlay':isHover,'isntPlay':!isHover}" 
- (mouseover)="hover()"
- [valuePaused]="interval" 
- (onPause)="getInterval($event)"
- (onFinish)="getFinish($event)"
- ></app-spinner>
+<div class="form-column">
+  <div>
+    <app-button-play 
+    (onPlay)="isPlayed($event)" 
+    [ngClass]="{'isPlay':isPlay && !isHover,'isntPlay':isHover}"
+    (mouseout)="isPlay ? noHover():null" 
+    (mouseover)="isPlay ? hover() : null"></app-button-play>
+    <app-spinner *ngIf="isPlay"
+    [ngClass]="{'isPlay':isHover,'isntPlay':!isHover}" 
+    (mouseover)="hover()"
+    [valuePaused]="interval" 
+    (onPause)="getInterval($event)"
+    (onFinish)="getFinish($event)"
+    (onTime)="getTime($event)"
+    ></app-spinner>
+</div>
+
+<span *ngIf="timeElapsed > 0">{{timeElapsed | toTime}}</span>
+</div>

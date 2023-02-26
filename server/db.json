@@ -3,26 +3,22 @@
     {
       "id": 1,
       "done": true,
-      "name": "programar2",
-      "timeSpent": 0
+      "name": "programar2"
     },
     {
       "id": 2,
       "done": true,
-      "name": "programar22",
-      "timeSpent": 0
+      "name": "programar22"
     },
     {
-      "name": "programar hasta tarde",
-      "done": false,
       "id": 3,
-      "timeSpent": 0
+      "done": false,
+      "name": "prueba"
     },
     {
-      "name": "prueba con tiempo",
+      "id": 4,
       "done": false,
-      "timeSpent": 0,
-      "id": 4
+      "name": "prueba con tiempo"
     }
   ]
 }

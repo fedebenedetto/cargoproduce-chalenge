@@ -11,6 +11,7 @@ import { TasksStoreService } from 'src/app/core/services/store/tasks/tasks.store
 export class TodoListComponent implements OnInit, OnDestroy {
 
   tasks?: Task[];
+  todos?: any[];
   taskSusc = new Subscription();
   constructor(private taskSrv: TasksStoreService) { }
   ngOnDestroy(): void {
@@ -30,6 +31,12 @@ export class TodoListComponent implements OnInit, OnDestroy {
       if (getTaskState.state === 'SUCCESS' && !loTask) {
         loTask = getTaskState.getTastResponse;
         this.tasks = getTaskState?.getTastResponse;
+        this.todos = this.tasks?.map(task => {
+          return {
+            ...task,
+            buttonEnabled: false
+          }
+        })
       }
     })
   }

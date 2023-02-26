@@ -10,7 +10,7 @@ import { TasksStoreService } from 'src/app/core/services/store/tasks/tasks.store
 })
 export class TodoItemComponent implements OnInit {
 
-  @Input() task?: Task;
+  @Input() task?: any;
   @ViewChild('inputFisico') txtInputFisico?: ElementRef;
 
   txtInput: FormControl = new FormControl(this.task?.name, Validators.required);
@@ -44,6 +44,10 @@ export class TodoItemComponent implements OnInit {
   }
 
   getFinish(data: boolean) {
-    this.taskSrv.putTask({ id: this.task?.id, done: data , name: this.txtInput.value })
+    this.taskSrv.putTask({ id: this.task?.id, done: data , name: this.task?.name })
+  }
+
+  getOnClick(data:boolean){
+    this.task.buttonEnabled = data;
   }
 }
